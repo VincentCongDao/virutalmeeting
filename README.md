@@ -2,7 +2,7 @@
 
 This project is call
 
-[VirtualMeeting](/public/images/VirtualMeeting_github.png)
+![VirtualMeeting](/public/images/VirtualMeeting_github.png)
 
 ## Run This Project Locally
 
