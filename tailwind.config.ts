@@ -11,8 +11,23 @@ const config: Config = {
 		extend: {
 			colors: {
 				dark: {
-					1: "#1C1F2E",
-					2: "#161925",
+					1: "#202838",
+					2: "#232A3D",
+				},
+				pink: {
+					1: "#ffe1f5",
+					2: "#f2bae4",
+				},
+				green: {
+					1: "#4D7B93",
+				},
+				blue: {
+					1: "#1A2C54",
+					2: "#01243A",
+				},
+				red: {
+					1: "#442342",
+					2: "#660F53",
 				},
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
@@ -54,6 +69,10 @@ const config: Config = {
 					"4": "hsl(var(--chart-4))",
 					"5": "hsl(var(--chart-5))",
 				},
+			},
+
+			backgroundImage: {
+				hero: "url('/images/hero.jpg')",
 			},
 			borderRadius: {
 				lg: "var(--radius)",
