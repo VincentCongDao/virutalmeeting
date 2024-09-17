@@ -1,7 +1,9 @@
 import { Toaster } from '@/components/ui/toaster';
 import { ClerkProvider } from '@clerk/nextjs';
+import "@stream-io/video-react-sdk/dist/css/styles.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import "react-datepicker/dist/react-datepicker.css";
 import "./globals.css";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,6 +19,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Virutal Meeting",
   description: "A place where you can able to video chat with your friends, stranger, and etc.",
+  icons: {
+    icon: "/icons/VirtualMeeting_logo.svg",
+  }
 };
 
 export default function RootLayout({

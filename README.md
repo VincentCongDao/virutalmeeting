@@ -27,14 +27,30 @@ You will need to public key from them.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+If you want to test and create schedule meeting on your domain, you will needs to moditfy your base url inside
+.env.local or .env
+
+Example
+
+```bash
+// .env.*
+
+NEXT_PUBLIC_BASE_URL = localhost:3000
+```
+
 ## Tech Stack
 
 **Client**
 
 - Next.14
+- TypeScript
 - TailwindCSS
+- Shadcn-UI
+- React-DatePicker
 
 **Server**
+
+- getStream
 
 ## Lesson From This Project
 

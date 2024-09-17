@@ -1,6 +1,13 @@
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "Virutal Meeting",
+    description: "A place where you can able to video chat with your friends, stranger, and etc.",
+    icons: {
+        icon: "/icons/VirtualMeeting_logo.svg",
+    }
+};
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <main className="relative">
