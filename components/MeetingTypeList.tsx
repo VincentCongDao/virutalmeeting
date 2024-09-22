@@ -3,12 +3,13 @@
 import { useToast } from "@/hooks/use-toast";
 import { useUser } from "@clerk/nextjs";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
-import { PackagePlus } from "lucide-react";
+import { CalendarCheck2, Merge, PackagePlus, TableProperties } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import ReactDatePicker from 'react-datepicker';
 import HomeCard from "./HomeCard";
 import MeetingModal from "./MeetingModal";
+import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 
 /**
@@ -86,52 +87,61 @@ const MeetingTypeList = () => {
     return (
         <section className="grid grids-cols-1 gap-5 md:grdi-cols-2 xl:grid-cols-4">
             <HomeCard title="New Meeting" description="Start an instant meeting" logo={<PackagePlus />} homeCardColors="bg-green-1" handleClick={() => setHomeRoomInt("isInstantMeeting")} />
-            <HomeCard title="Scheduled Meeting" description="Plan your meetings" logo={<PackagePlus />} homeCardColors="bg-red-2" handleClick={() => setHomeRoomInt("isScheduleMeeting")} />
-            <HomeCard title="View Records" description="Check your records" logo={<PackagePlus />} homeCardColors="bg-blue-2" handleClick={() => router.push("/recordings")} />
-            <HomeCard title="Join Meetings" description="join with your code" logo={<PackagePlus />} homeCardColors="bg-red-1" handleClick={() => router.push("/isJoinMeeting")} />
+
+            <HomeCard title="Scheduled Meeting" description="Plan your meetings" logo={<CalendarCheck2 />}
+                homeCardColors="bg-red-2" handleClick={() => setHomeRoomInt("isScheduleMeeting")} />
+
+            <HomeCard title="View Records" description="Check your records" logo={<TableProperties />} homeCardColors="bg-blue-2" handleClick={() => router.push("/recordings")} />
+
+            <HomeCard title="Join Meetings" description="join with your code" logo={<Merge />} homeCardColors="bg-red-1" handleClick={() => router.push("/isJoinMeeting")} />
             {!callDetails ? (
                 <MeetingModal
-                    isOpen={homeRoomInt === "isScheduleMeeting"}
+                    isOpen={homeRoomInt === 'isScheduleMeeting'}
                     onClose={() => setHomeRoomInt(undefined)}
-                    title="Create a scheduled meeting"
+                    title="Create Meeting"
                     handleClick={createMeeting}
                 >
                     <div className="flex flex-col gap-2.5">
-                        <label className="text-base text-normal leading-[22px] text-sky-2">
+                        <label className="text-base font-normal leading-[22.4px] text-sky-2">
                             Add a description
                         </label>
-                        <Textarea className="border-none bg-dark-2 focus-visible:ring-0 focus-visible:ring-offset-0"
-                            onChange={e => {
+                        <Textarea
+                            className="border-none bg-dark-2 focus-visible:ring-2 focus-visible:ring-offset-2"
+                            onChange={(e) =>
                                 setValues({ ...values, description: e.target.value })
-                            }} />
+                            }
+                        />
                     </div>
                     <div className="flex w-full flex-col gap-2.5">
-                        <label className="text-base text-normal leading-[22px] text-sky-2">
-                            Select Date and time
+                        <label className="text-base font-normal leading-[22.4px] text-sky-2">
+                            Select Date and Time
                         </label>
-                        <ReactDatePicker selected={values.dateTime}
-                            onChange={date => setValues({ ...values, dateTime: date! })}
+                        <ReactDatePicker
+                            selected={values.dateTime}
+                            onChange={(date) => setValues({ ...values, dateTime: date! })}
                             showTimeSelect
                             timeFormat="HH:mm"
                             timeIntervals={15}
                             timeCaption="time"
-                            dateFormat={"MMMM d, yyyy h:mm aa"}
-                            className="w-full rounded bg-dark-1 p-2 focus:outline-none" />
+                            dateFormat="MMMM d, yyyy h:mm aa"
+                            className="w-full rounded bg-dark-2 p-2 focus:ring-2"
+                        />
                     </div>
                 </MeetingModal>
             ) : (
                 <MeetingModal
-                    isOpen={homeRoomInt === "isScheduleMeeting"}
+                    isOpen={homeRoomInt === 'isScheduleMeeting'}
                     onClose={() => setHomeRoomInt(undefined)}
                     title="Meeting Created"
-                    className="text-center"
                     handleClick={() => {
-                        navigator.clipboard.writeText(meetingLink)
-                        toast({ title: "Link copied" })
-                    }
-
-                    }
-                />)
+                        navigator.clipboard.writeText(meetingLink);
+                        toast({ title: 'Link Copied' });
+                    }}
+                    buttonIcon="/icons/copy.svg"
+                    className="flex justify-center items-center "
+                    buttonText="Copy Meeting Link"
+                />
+            )
             }
             <MeetingModal
                 isOpen={homeRoomInt === "isInstantMeeting"}
@@ -141,6 +151,16 @@ const MeetingTypeList = () => {
                 buttonText="Start Meeting"
                 handleClick={createMeeting}
             />
+            <MeetingModal
+                isOpen={homeRoomInt === "isJoinMeeting"}
+                onClose={() => setHomeRoomInt(undefined)}
+                title="Insert the links"
+                className="test-center"
+                buttonText="Join Meeting"
+                handleClick={() => router.push(values.link)}
+            >
+                <Input placeholder="Enter meeting link" className="border-none bg-dark-2 focus-visible:ring-2 focus-visible:ring-offset-2" onChange={(e) => setValues({ ...values, link: e.target.value })} />
+            </MeetingModal>
         </section>
     );
 }

@@ -35,7 +35,8 @@ Example
 ```bash
 // .env.*
 
-NEXT_PUBLIC_BASE_URL = localhost:3000
+NEXT_PUBLIC_BASE_URL= (your domain)
+
 ```
 
 ## Tech Stack
@@ -54,10 +55,27 @@ NEXT_PUBLIC_BASE_URL = localhost:3000
 
 ## Lesson From This Project
 
-<a id="Lesson">What I learn</a>
+<a id="Lesson">Lessons Learned</a>
+
+In this project, I gained experience with several important technologies and concepts:
+
+1. GetStream API:
+
+- I learned how to integrate GetStream to manage video call streaming. This helped me create smooth, real-time video meetings, private rooms, and personal meeting rooms.
+
+2. Clerk.js for Authentication:
+
+- I implemented authentication using Clerk.js, allowing users to create meeting links that they can copy and share with others to join the meeting. This simplifies user authentication and improves the security of private meeting rooms.
+
+3. Private and Public Rooms:
+
+- I learned to differentiate between private and public meeting rooms and manage access rights, providing secure links for personal meetings.
+
+4. Real-time Scheduling:
+
+- Implementing scheduling and custom URLs with real-time updates for meetings was a key feature I integrated, allowing users to book meetings in their time zone.
 
 ## Credit
 
-()[https://pixabay.com/vectors/waves-abstract-lines-line-art-5437897/]
-()[https://pixabay.com/gifs/interview-feedback-talking-dialogue-8470/]
-()[https://pixabay.com/illustrations/texture-background-soft-blue-light-1668079/]
+- [Gif for Loading Animation](https://pixabay.com/gifs/interview-feedback-talking-dialogue-8470/)
+- [Background Hero](https://pixabay.com/illustrations/texture-background-soft-blue-light-1668079/)

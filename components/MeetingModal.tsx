@@ -18,7 +18,7 @@ interface MeetingModalProps {
     buttonIcon?: string;
     children?: React.ReactNode;
 }
-const MeetingModal = ({ isOpen, onClose, title, className, buttonText, handleClick, image, buttonIcon }: MeetingModalProps) => {
+const MeetingModal = ({ isOpen, onClose, title, className, buttonText, handleClick, image, buttonIcon, children }: MeetingModalProps) => {
     return (
         <div>
             <Dialog open={isOpen} onOpenChange={onClose}>
@@ -33,10 +33,11 @@ const MeetingModal = ({ isOpen, onClose, title, className, buttonText, handleCli
                             )
                         }
                         <h1 className={cn("text-3xl font-bold leading-[42px]", className)}>{title}</h1>
-                        <Button className={`bg-pink-1 text-black focus-visible:ring-0 focus-visible:ring-offset-0`} onClick={handleClick}>
+                        {children}
+                        <Button className={`bg-blue-1 text-black focus-visible:ring-0 focus-visible:ring-offset-0`} onClick={handleClick}>
                             {buttonIcon &&
                                 (
-                                    <Image src={buttonIcon} alt={buttonIcon} width={24} height={24} />
+                                    <Image src={buttonIcon} alt={buttonIcon} width={24} height={24} className="pr-2" />
                                 )}
                             {buttonText || "Schedule Meeting"}
                         </Button>

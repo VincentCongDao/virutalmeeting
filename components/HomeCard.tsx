@@ -5,6 +5,7 @@ interface HomeCardProps {
     title: string;
     description: string;
     homeCardColors: string;
+    icon?: string
     handleClick?: () => void
 }
 const HomeCard: React.FC<HomeCardProps> = ({ logo, title, description, homeCardColors, handleClick }) => {
