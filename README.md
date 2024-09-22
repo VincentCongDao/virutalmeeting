@@ -79,3 +79,4 @@ In this project, I gained experience with several important technologies and con
 
 - [Gif for Loading Animation](https://pixabay.com/gifs/interview-feedback-talking-dialogue-8470/)
 - [Background Hero](https://pixabay.com/illustrations/texture-background-soft-blue-light-1668079/)
+- [JavaScriptMastery](https://www.youtube.com/@javascriptmastery)
